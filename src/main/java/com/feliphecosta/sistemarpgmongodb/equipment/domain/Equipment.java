@@ -2,14 +2,19 @@ package com.feliphecosta.sistemarpgmongodb.equipment.domain;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="equipment")
 public class Equipment implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	@Id
 	private String id;
 	private String nome;
 	private String aura;
-	private Integer quantidade;
 	private String raridade;
+	private Integer quantidade;
 	private String especial;
 	private Double preco;
 	
