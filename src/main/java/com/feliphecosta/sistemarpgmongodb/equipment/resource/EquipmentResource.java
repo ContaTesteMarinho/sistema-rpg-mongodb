@@ -1,4 +1,4 @@
-package com.feliphecosta.sistemarpgmongodb.equipment.resources;
+package com.feliphecosta.sistemarpgmongodb.equipment.resource;
 
 import java.util.List;
 
