@@ -1,11 +1,9 @@
-package com.feliphecosta.sistemarpgmongodb.weapon.domain;
+package com.feliphecosta.sistemarpgmongodb.weapon.dto;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.feliphecosta.sistemarpgmongodb.equipment.dto.EquipmentDTO;
+import com.feliphecosta.sistemarpgmongodb.weapon.domain.Weapon;
 
-import com.feliphecosta.sistemarpgmongodb.equipment.domain.Equipment;
-
-@Document
-public class Weapon extends Equipment {
+public class WeaponDTO extends EquipmentDTO {
 	private static final long serialVersionUID = 1L;
 	
 	private Integer dano;
@@ -13,16 +11,21 @@ public class Weapon extends Equipment {
 	private Integer fn;
 	private	String grupo;
 	private String observacao;
-	
-	public Weapon() {}
-	
-	public Weapon(String nome, String aura, Integer quantidade, String raridade, String especial, Double preco, Integer dano, String tipo, Integer fn, String grupo, String observacao) {
-		super(nome, aura, quantidade, raridade, especial, preco);
-		this.dano = dano;
-		this.tipo = tipo;
-		this.fn = fn;
-		this.grupo = grupo;
-		this.observacao = observacao;
+
+	public WeaponDTO() {}
+
+	public WeaponDTO(Weapon weapon) {
+		this.setNome(weapon.getNome());
+		this.setAura(weapon.getAura());
+		this.setRaridade(weapon.getRaridade());
+		this.setQuantidade(weapon.getQuantidade());
+		this.setEspecial(weapon.getEspecial());
+		this.setPreco(weapon.getPreco());
+		this.dano = weapon.getDano();
+		this.tipo = weapon.getTipo();
+		this.fn = weapon.getFn();
+		this.grupo = weapon.getGrupo();
+		this.observacao = weapon.getObservacao();
 	}
 
 	public Integer getDano() {
@@ -64,5 +67,6 @@ public class Weapon extends Equipment {
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
+	
 	
 }

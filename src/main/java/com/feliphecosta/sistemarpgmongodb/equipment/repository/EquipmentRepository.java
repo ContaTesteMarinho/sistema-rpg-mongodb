@@ -7,6 +7,5 @@ import com.feliphecosta.sistemarpgmongodb.equipment.domain.Equipment;
 
 @Repository
 public interface EquipmentRepository extends MongoRepository<Equipment, String> {
-
 	
 }

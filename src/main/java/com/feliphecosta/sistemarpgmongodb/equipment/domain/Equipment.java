@@ -20,9 +20,9 @@ public class Equipment implements Serializable{
 	
 	public Equipment() {}
 
-	public Equipment(String id, String nome, String aura, Integer quantidade, String raridade, String especial, Double preco) {
+	public Equipment(String nome, String aura, Integer quantidade, String raridade, String especial, Double preco) {
 		super();
-		this.id = id;
+		this.id = null;
 		this.nome = nome;
 		this.aura = aura;
 		this.quantidade = quantidade;
