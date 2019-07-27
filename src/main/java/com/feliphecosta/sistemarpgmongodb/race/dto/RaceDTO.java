@@ -4,15 +4,13 @@ import java.io.Serializable;
 
 import com.feliphecosta.sistemarpgmongodb.race.domain.Race;
 import com.feliphecosta.sistemarpgmongodb.skill.domain.Skill;
+import com.feliphecosta.sistemarpgmongodb.util.Attributes;
 
 public class RaceDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String name;
-	private Integer strength;
-	private Integer agility;
-	private Integer intelligence;
-	private Integer will;
+	private Attributes attributes;
 	private String bonus;
 	private String commonClasses;
 	private Skill raceSkill;
@@ -21,10 +19,7 @@ public class RaceDTO implements Serializable {
 	
 	public RaceDTO(Race race) {
 		this.name = race.getName();
-		this.strength = race.getStrength();
-		this.agility = race.getAgility();
-		this.intelligence = race.getIntelligence();
-		this.will = race.getWill();
+		this.setAttributes(race.getAttributes());
 		this.bonus = race.getBonus();
 		this.commonClasses = race.getCommonClasses();
 		this.raceSkill = race.getRaceSkill();
@@ -38,36 +33,12 @@ public class RaceDTO implements Serializable {
 		this.name = name;
 	}
 
-	public Integer getStrength() {
-		return strength;
+	public Attributes getAttributes() {
+		return attributes;
 	}
 
-	public void setStrength(Integer strength) {
-		this.strength = strength;
-	}
-
-	public Integer getAgility() {
-		return agility;
-	}
-
-	public void setAgility(Integer agility) {
-		this.agility = agility;
-	}
-
-	public Integer getIntelligence() {
-		return intelligence;
-	}
-
-	public void setIntelligence(Integer intelligence) {
-		this.intelligence = intelligence;
-	}
-
-	public Integer getWill() {
-		return will;
-	}
-
-	public void setWill(Integer will) {
-		this.will = will;
+	public void setAttributes(Attributes attributes) {
+		this.attributes = attributes;
 	}
 
 	public String getBonus() {

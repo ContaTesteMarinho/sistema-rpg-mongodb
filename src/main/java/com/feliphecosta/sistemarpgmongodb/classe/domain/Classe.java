@@ -1,6 +1,7 @@
-package com.feliphecosta.sistemarpgmongodb.race.domain;
+package com.feliphecosta.sistemarpgmongodb.classe.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,27 +10,25 @@ import com.feliphecosta.sistemarpgmongodb.skill.domain.Skill;
 import com.feliphecosta.sistemarpgmongodb.util.Attributes;
 
 @Document
-public class Race implements Serializable {
+public class Classe implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	private String id;
 	private String name;
 	private Attributes attributes;
-	private String bonus;
-	private String commonClasses;
-	private Skill raceSkill;
+	private String proficiency;
+	private List<Skill> skills;
+	private String description;
+	
+	public Classe() {}
 
-	public Race() {}
-
-	public Race(String name, Integer strength, Integer agility, Integer intelligence, Integer will, String bonus,
-			String commonClasses, Skill raceSkill) {
-		this.id = null;
+	public Classe(String name, Attributes attributes, String proficiency, List<Skill> skills, String description) {
 		this.name = name;
-		this.setAttributes(new Attributes(strength, agility, intelligence, will));
-		this.bonus = bonus;
-		this.commonClasses = commonClasses;
-		this.raceSkill = raceSkill;
+		this.attributes = attributes;
+		this.proficiency = proficiency;
+		this.skills = skills;
+		this.description = description;
 	}
 
 	public String getId() {
@@ -56,28 +55,28 @@ public class Race implements Serializable {
 		this.attributes = attributes;
 	}
 
-	public String getBonus() {
-		return bonus;
+	public String getProficiency() {
+		return proficiency;
 	}
 
-	public void setBonus(String bonus) {
-		this.bonus = bonus;
+	public void setProficiency(String proficiency) {
+		this.proficiency = proficiency;
 	}
 
-	public String getCommonClasses() {
-		return commonClasses;
+	public List<Skill> getSkills() {
+		return skills;
 	}
 
-	public void setCommonClasses(String commonClasses) {
-		this.commonClasses = commonClasses;
+	public void setSkills(List<Skill> skills) {
+		this.skills = skills;
 	}
 
-	public Skill getRaceSkill() {
-		return raceSkill;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setRaceSkill(Skill raceSkill) {
-		this.raceSkill = raceSkill;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override
@@ -96,7 +95,7 @@ public class Race implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Race other = (Race) obj;
+		Classe other = (Classe) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -104,5 +103,5 @@ public class Race implements Serializable {
 			return false;
 		return true;
 	}
-
+	
 }
