@@ -73,7 +73,7 @@ public class Instantiation implements CommandLineRunner {
 		
 		CharacterSheet fichaFeliphe = new CharacterSheet(null, "Feliphe Costa", espadachim, human, new Level(1, 0, 300), 450, human.getAttributes(), 60, 60, Arrays.asList(acrobacia, ataqueGiratorio), new Equipamentos(Arrays.asList(arcoDeGreen), null, Arrays.asList(helthPotion)));
 		
-		User feliphe = new User(null, "feliphemarinho18@gmail.com", pe.encode("feliphe"), fichaFeliphe);
+		User feliphe = new User(null, "feliphemarinho18@gmail.com", pe.encode("123"), fichaFeliphe);
 		feliphe.addPerfil(Perfil.ADMIM);
 		
 		weaponRepo.saveAll(Arrays.asList(arcoDeGreen));
