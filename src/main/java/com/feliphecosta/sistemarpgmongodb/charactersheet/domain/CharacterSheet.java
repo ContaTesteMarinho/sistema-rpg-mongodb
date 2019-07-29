@@ -1,4 +1,4 @@
-package com.feliphecosta.sistemarpgmongodb.player.domain;
+package com.feliphecosta.sistemarpgmongodb.charactersheet.domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,7 +14,7 @@ import com.feliphecosta.sistemarpgmongodb.util.Equipamentos;
 import com.feliphecosta.sistemarpgmongodb.util.Level;
 
 @Document
-public class Player implements Serializable {
+public class CharacterSheet implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -30,9 +30,9 @@ public class Player implements Serializable {
 	private List<Skill> skills;
 	private Equipamentos equipment;
 	
-	public Player() {}
+	public CharacterSheet() {}
 
-	public Player(String id, String name, Classe classe,Race race , Level level, Integer coins, Attributes attributes,
+	public CharacterSheet(String id, String name, Classe classe,Race race , Level level, Integer coins, Attributes attributes,
 			Integer healthPoints, Integer manaPoints, List<Skill> skills, Equipamentos equipment) {
 		this.id = id;
 		this.name = name;
@@ -151,7 +151,7 @@ public class Player implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Player other = (Player) obj;
+		CharacterSheet other = (CharacterSheet) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

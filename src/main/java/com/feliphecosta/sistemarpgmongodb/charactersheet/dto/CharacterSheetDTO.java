@@ -1,17 +1,17 @@
-package com.feliphecosta.sistemarpgmongodb.player.dto;
+package com.feliphecosta.sistemarpgmongodb.charactersheet.dto;
 
 import java.io.Serializable;
 import java.util.List;
 
+import com.feliphecosta.sistemarpgmongodb.charactersheet.domain.CharacterSheet;
 import com.feliphecosta.sistemarpgmongodb.classe.domain.Classe;
-import com.feliphecosta.sistemarpgmongodb.player.domain.Player;
 import com.feliphecosta.sistemarpgmongodb.race.domain.Race;
 import com.feliphecosta.sistemarpgmongodb.skill.domain.Skill;
 import com.feliphecosta.sistemarpgmongodb.util.Attributes;
 import com.feliphecosta.sistemarpgmongodb.util.Equipamentos;
 import com.feliphecosta.sistemarpgmongodb.util.Level;
 
-public class PlayerDTO implements Serializable {
+public class CharacterSheetDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String name;
@@ -25,19 +25,19 @@ public class PlayerDTO implements Serializable {
 	private List<Skill> skills;
 	private Equipamentos equipment;
 	
-	public PlayerDTO() {}
+	public CharacterSheetDTO() {}
 
-	public PlayerDTO(Player player) {
-		this.name = player.getName();
-		this.classe = player.getClasse();
-		this.setRace(player.getRace());
-		this.level = player.getLevel();
-		this.coins = player.getCoins();
-		this.attributes = player.getAttributes();
-		this.healthPoints = player.getHealthPoints();
-		this.manaPoints = player.getManaPoints();
-		this.skills = player.getSkills();
-		this.equipment = player.getEquipment();
+	public CharacterSheetDTO(CharacterSheet characterSheet) {
+		this.name = characterSheet.getName();
+		this.classe = characterSheet.getClasse();
+		this.setRace(characterSheet.getRace());
+		this.level = characterSheet.getLevel();
+		this.coins = characterSheet.getCoins();
+		this.attributes = characterSheet.getAttributes();
+		this.healthPoints = characterSheet.getHealthPoints();
+		this.manaPoints = characterSheet.getManaPoints();
+		this.skills = characterSheet.getSkills();
+		this.equipment = characterSheet.getEquipment();
 	}
 
 	public String getName() {
