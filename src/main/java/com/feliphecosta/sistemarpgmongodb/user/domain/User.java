@@ -1,11 +1,15 @@
 package com.feliphecosta.sistemarpgmongodb.user.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.feliphecosta.sistemarpgmongodb.charactersheet.domain.CharacterSheet;
+import com.feliphecosta.sistemarpgmongodb.util.enums.Perfil;
 
 @Document
 public class User implements Serializable {
@@ -16,10 +20,14 @@ public class User implements Serializable {
 	private String email;
 	private String password;
 	private CharacterSheet characterSheet;
+	private Set<Integer> perfis = new HashSet<>();
 	
-	public User() {}
+	public User() {
+		addPerfil(Perfil.CLIENTE);
+	}
 
 	public User(String id, String email, String password, CharacterSheet characterSheet) {
+		addPerfil(Perfil.CLIENTE);
 		this.id = id;
 		this.email = email;
 		this.password = password;
@@ -56,6 +64,14 @@ public class User implements Serializable {
 
 	public void setCharacterSheet(CharacterSheet characterSheet) {
 		this.characterSheet = characterSheet;
+	}
+
+	public Set<Perfil> getPerfis() {
+		return perfis.stream().map(perfilInteger -> Perfil.toEnum(perfilInteger)).collect(Collectors.toSet()); 
+	}
+
+	public void addPerfil(Perfil perfil) {
+		perfis.add(perfil.getCod());
 	}
 
 	@Override

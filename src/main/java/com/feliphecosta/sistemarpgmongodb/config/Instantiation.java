@@ -22,6 +22,7 @@ import com.feliphecosta.sistemarpgmongodb.user.repository.UserRepository;
 import com.feliphecosta.sistemarpgmongodb.util.Attributes;
 import com.feliphecosta.sistemarpgmongodb.util.Equipamentos;
 import com.feliphecosta.sistemarpgmongodb.util.Level;
+import com.feliphecosta.sistemarpgmongodb.util.enums.Perfil;
 import com.feliphecosta.sistemarpgmongodb.weapon.domain.Weapon;
 import com.feliphecosta.sistemarpgmongodb.weapon.repository.WeaponRepository;
 
@@ -72,7 +73,8 @@ public class Instantiation implements CommandLineRunner {
 		
 		CharacterSheet fichaFeliphe = new CharacterSheet(null, "Feliphe Costa", espadachim, human, new Level(1, 0, 300), 450, human.getAttributes(), 60, 60, Arrays.asList(acrobacia, ataqueGiratorio), new Equipamentos(Arrays.asList(arcoDeGreen), null, Arrays.asList(helthPotion)));
 		
-		User user = new User(null, "feliphemarinho18@gmail.com", pe.encode("feliphe"), fichaFeliphe);
+		User feliphe = new User(null, "feliphemarinho18@gmail.com", pe.encode("feliphe"), fichaFeliphe);
+		feliphe.addPerfil(Perfil.ADMIM);
 		
 		weaponRepo.saveAll(Arrays.asList(arcoDeGreen));
 		potionRepo.saveAll(Arrays.asList(helthPotion));
@@ -80,7 +82,7 @@ public class Instantiation implements CommandLineRunner {
 		raceRepo.saveAll(Arrays.asList(human, dwarf));
 		classeRepo.saveAll(Arrays.asList(espadachim));
 		characterSheetRepo.saveAll(Arrays.asList(fichaFeliphe));
-		userRepo.saveAll(Arrays.asList(user));
+		userRepo.saveAll(Arrays.asList(feliphe));
 		
 	}
 
