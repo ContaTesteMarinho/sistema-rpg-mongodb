@@ -34,4 +34,5 @@ public class UserService {
 	public User fromDTO(UserNewDTO userNewDTO) {
 		return new User(null, userNewDTO.getEmail(), pe.encode(userNewDTO.getPassword()), null);
 	}
+	
 }
