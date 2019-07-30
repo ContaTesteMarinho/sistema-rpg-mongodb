@@ -1,51 +1,11 @@
 package com.feliphecosta.sistemarpgmongodb.config;
 
-import java.util.Arrays;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import com.feliphecosta.sistemarpgmongodb.charactersheet.domain.CharacterSheet;
-import com.feliphecosta.sistemarpgmongodb.charactersheet.repository.CharacterSheetRepository;
-import com.feliphecosta.sistemarpgmongodb.classe.domain.Classe;
-import com.feliphecosta.sistemarpgmongodb.classe.repository.ClasseRepository;
-import com.feliphecosta.sistemarpgmongodb.potion.domain.Potion;
-import com.feliphecosta.sistemarpgmongodb.potion.repository.PotionRepository;
-import com.feliphecosta.sistemarpgmongodb.race.domain.Race;
-import com.feliphecosta.sistemarpgmongodb.race.repository.RaceRepository;
-import com.feliphecosta.sistemarpgmongodb.skill.domain.Skill;
-import com.feliphecosta.sistemarpgmongodb.skill.repository.SkillRepository;
-import com.feliphecosta.sistemarpgmongodb.user.domain.User;
-import com.feliphecosta.sistemarpgmongodb.user.repository.UserRepository;
-import com.feliphecosta.sistemarpgmongodb.util.Attributes;
-import com.feliphecosta.sistemarpgmongodb.util.Equipamentos;
-import com.feliphecosta.sistemarpgmongodb.util.Level;
-import com.feliphecosta.sistemarpgmongodb.util.enums.Perfil;
-import com.feliphecosta.sistemarpgmongodb.weapon.domain.Weapon;
-import com.feliphecosta.sistemarpgmongodb.weapon.repository.WeaponRepository;
 
 @Configuration
 public class Instantiation implements CommandLineRunner {
 
-	@Autowired
-	private WeaponRepository weaponRepo;
-	@Autowired
-	private PotionRepository potionRepo;
-	@Autowired
-	private SkillRepository skillRepo;
-	@Autowired
-	private RaceRepository raceRepo;
-	@Autowired
-	private ClasseRepository classeRepo;
-	@Autowired
-	private CharacterSheetRepository characterSheetRepo;
-	@Autowired
-	private UserRepository userRepo;
-	@Autowired
-	private BCryptPasswordEncoder pe;
-	
 	@Override
 	public void run(String... args) throws Exception {
 		
