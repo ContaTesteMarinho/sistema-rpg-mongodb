@@ -58,6 +58,8 @@ public class Instantiation implements CommandLineRunner {
 		userRepo.deleteAll();
 		
 		Weapon arcoDeGreen = new Weapon("Arco de Green", "Fraca", 3, "Incomun", "Bônus de +2 nas rolagens de ataque contra criaturas voadoras (que possuem a habilidade Asas Pesadas, Asas Rápidas ou Levitação)", 350.0, 14, "Perfuração", 2, "Arma Complexa", "Duas Mãos");
+		Weapon adagaDasSombras = new Weapon("Adaga Das Sombras", "Fraca", 15, "Incomun", "Esta adaga pode causar dano em criaturas incórporeas(Como fantasmas, espirítos e espectros)", 75.0, 6, "Corte/Perfuração", 1, "Arma Simples", "Arremesso");
+		Weapon espadaDosQuatroVentos = new Weapon("Espada Dos Quatro Ventos", "Fraca", 3, "Incomun", "Esta espada pode fazer ataques corporais que atigem alvos a distancia com uma rajada de vento cortante", 350.0, 14, "Corte/Perfuração", 3, "Arma Complexa", null);
 		
 		Potion helthPotion = new Potion("Poção da Vida", "Nula", 18, "Comum", "Recupera 30 pontos de vida a quem ingerir completamente o líquido", 200.0, "Éter, Folha de oliveira e Raiz de Carvalho");
 		
@@ -76,7 +78,7 @@ public class Instantiation implements CommandLineRunner {
 		User feliphe = new User(null, "feliphemarinho18@gmail.com", pe.encode("123"), fichaFeliphe);
 		feliphe.addPerfil(Perfil.ADMIM);
 		
-		weaponRepo.saveAll(Arrays.asList(arcoDeGreen));
+		weaponRepo.saveAll(Arrays.asList(arcoDeGreen, adagaDasSombras, espadaDosQuatroVentos));
 		potionRepo.saveAll(Arrays.asList(helthPotion));
 		skillRepo.saveAll(Arrays.asList(gracaDivina, vigorDaMontanha, acrobacia, ataqueGiratorio));
 		raceRepo.saveAll(Arrays.asList(human, dwarf));
