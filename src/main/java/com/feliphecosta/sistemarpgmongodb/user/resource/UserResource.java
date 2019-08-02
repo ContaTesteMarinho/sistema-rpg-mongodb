@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -28,6 +29,12 @@ public class UserResource {
 		
 		User user = userService.findById(id);
 		
+		return ResponseEntity.ok().body(user);
+	}
+	
+	@RequestMapping(value="/email", method=RequestMethod.GET)
+	public ResponseEntity<User> find(@RequestParam(value="value") String email) {
+		User user = userService.findByEmail(email);
 		return ResponseEntity.ok().body(user);
 	}
 	

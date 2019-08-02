@@ -35,4 +35,8 @@ public class UserService {
 		return new User(null, userNewDTO.getEmail(), pe.encode(userNewDTO.getPassword()), null);
 	}
 	
+	public User findByEmail(String email) {
+		return userRepo.findByEmail(email);
+	}
+	
 }
