@@ -41,7 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		"/weapons",
 		"/skills",
 		"/potions",
-		"/equipments"
+		"/equipments",
+		"/users/**"
 	};
 	
 	@Override
