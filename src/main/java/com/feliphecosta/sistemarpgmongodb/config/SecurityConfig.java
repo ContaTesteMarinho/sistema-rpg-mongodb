@@ -32,7 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private JWTUtil jwtUtil;
 	
 	private static final String[] PUBLIC_MATCHERS = {
-		"/charactersheet/**"
+		"/charactersheet/**",
+		"/users/**"
 	};
 	
 	private static final String[] PUBLIC_MATCHERS_GET = {
@@ -41,8 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		"/weapons",
 		"/skills",
 		"/potions",
-		"/equipments",
-		"/users/**"
+		"/equipments"
 	};
 	
 	@Override
