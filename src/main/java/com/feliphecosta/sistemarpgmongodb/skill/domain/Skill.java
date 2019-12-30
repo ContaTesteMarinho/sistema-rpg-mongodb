@@ -5,6 +5,8 @@ import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.feliphecosta.sistemarpgmongodb.util.Requirement;
+
 @Document
 public class Skill implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -15,15 +17,16 @@ public class Skill implements Serializable {
 	private String description;
 	private String feature;
 	private Integer mana;
-	private String requirements;
+	private Requirement requirements;
 	private String especial;
 	private String example;
 	private Integer magicDifficulty;
+	private Boolean advanced;
 	
 	public Skill() {}
 
-	public Skill(String name, String description, String feature, Integer mana, String requirements, String especial,
-			String example, Integer magicDifficulty) {
+	public Skill(String name, String description, String feature, Integer mana, Requirement requirements, String especial,
+			String example, Integer magicDifficulty, boolean advanced) {
 		this.setId(null);
 		this.name = name;
 		this.description = description;
@@ -33,6 +36,7 @@ public class Skill implements Serializable {
 		this.especial = especial;
 		this.example = example;
 		this.magicDifficulty = magicDifficulty;
+		this.advanced = advanced;
 	}
 
 	public String getId() {
@@ -75,11 +79,11 @@ public class Skill implements Serializable {
 		this.mana = mana;
 	}
 
-	public String getRequirements() {
+	public Requirement getRequirements() {
 		return requirements;
 	}
 
-	public void setRequirements(String requirements) {
+	public void setRequirements(Requirement requirements) {
 		this.requirements = requirements;
 	}
 
@@ -105,6 +109,14 @@ public class Skill implements Serializable {
 
 	public void setMagicDifficulty(Integer magicDifficulty) {
 		this.magicDifficulty = magicDifficulty;
+	}
+
+	public Boolean getAdvanced() {
+		return advanced;
+	}
+
+	public void setAdvanced(Boolean advanced) {
+		this.advanced = advanced;
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package com.feliphecosta.sistemarpgmongodb.skill.dto;
 import java.io.Serializable;
 
 import com.feliphecosta.sistemarpgmongodb.skill.domain.Skill;
+import com.feliphecosta.sistemarpgmongodb.util.Requirement;
 
 public class SkillDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -11,10 +12,11 @@ public class SkillDTO implements Serializable{
 	private String description;
 	private String feature;
 	private Integer mana;
-	private String requirements;
+	private Requirement requirements;
 	private String especial;
 	private String example;
 	private Integer magicDifficulty;
+	private Boolean advanced;
 	
 	public SkillDTO() {}
 
@@ -27,6 +29,7 @@ public class SkillDTO implements Serializable{
 		this.especial = skill.getEspecial();
 		this.example = skill.getExample();
 		this.magicDifficulty = skill.getMagicDifficulty();
+		this.advanced = skill.getAdvanced();
 	}
 
 	public String getName() {
@@ -61,11 +64,11 @@ public class SkillDTO implements Serializable{
 		this.mana = mana;
 	}
 
-	public String getRequirements() {
+	public Requirement getRequirements() {
 		return requirements;
 	}
 
-	public void setRequirements(String requirements) {
+	public void setRequirements(Requirement requirements) {
 		this.requirements = requirements;
 	}
 
@@ -91,6 +94,14 @@ public class SkillDTO implements Serializable{
 
 	public void setMagicDifficulty(Integer magicDifficulty) {
 		this.magicDifficulty = magicDifficulty;
+	}
+
+	public Boolean getAdvanced() {
+		return advanced;
+	}
+
+	public void setAdvanced(Boolean advanced) {
+		this.advanced = advanced;
 	}
 	
 	
