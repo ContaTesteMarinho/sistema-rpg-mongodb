@@ -11,13 +11,15 @@ public class Requirement implements Serializable{
 	private Integer level;
 	private List<Skill> skills;
 	private String type;
+	private String description;
 	
 	public Requirement() {}
 	
-	public Requirement(Integer level, List<Skill> skills, String type) {
+	public Requirement(Integer level, List<Skill> skills, String type, String description) {
 		this.level = level;
 		this.skills = skills;
 		this.type = type;
+		this.description = description;
 	}
 
 	public Integer getLevel() {
@@ -42,6 +44,14 @@ public class Requirement implements Serializable{
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }
