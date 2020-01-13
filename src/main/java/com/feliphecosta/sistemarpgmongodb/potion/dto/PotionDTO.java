@@ -6,7 +6,7 @@ import com.feliphecosta.sistemarpgmongodb.potion.domain.Potion;
 public class PotionDTO extends EquipmentDTO {
 	private static final long serialVersionUID = 1L;
 
-	private String ingredientes;
+	private Ingredients ingredientes;
 
 	public PotionDTO() {}
 	
@@ -20,11 +20,11 @@ public class PotionDTO extends EquipmentDTO {
 		this.ingredientes = poison.getIngredientes();
 	}
 
-	public String getIngredientes() {
+	public Ingredients getIngredientes() {
 		return ingredientes;
 	}
 
-	public void setIngredientes(String ingredientes) {
+	public void setIngredientes(Ingredients ingredientes) {
 		this.ingredientes = ingredientes;
 	}
 		

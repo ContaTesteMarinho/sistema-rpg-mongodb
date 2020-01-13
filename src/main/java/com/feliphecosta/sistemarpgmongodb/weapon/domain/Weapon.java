@@ -12,12 +12,21 @@ public class Weapon extends Equipment {
 	private String tipo;
 	private Integer fn;
 	private	String grupo;
-	private String observacao;
+	private String observacao;	
 	
 	public Weapon() {}
 	
-	public Weapon(String nome, String aura, Integer quantidade, String raridade, String especial, Double preco, Integer dano, String tipo, Integer fn, String grupo, String observacao) {
-		super(nome, aura, quantidade, raridade, especial, preco);
+	public Weapon(String nome, Integer quantidade, Double preco, Integer dano, String tipo, Integer fn, String grupo, String observacao, String conjunto) {
+		super(nome, null, quantidade, null, null, preco, conjunto, null);
+		this.dano = dano;
+		this.tipo = tipo;
+		this.fn = fn;
+		this.grupo = grupo;
+		this.observacao = observacao;
+	}
+	
+	public Weapon(String nome, String aura, Integer quantidade, String raridade, String especial, Double preco, Integer dano, String tipo, Integer fn, String grupo, String observacao, String conjunto, Integer defesa) {
+		super(nome, aura, quantidade, raridade, especial, preco, conjunto, defesa);
 		this.dano = dano;
 		this.tipo = tipo;
 		this.fn = fn;

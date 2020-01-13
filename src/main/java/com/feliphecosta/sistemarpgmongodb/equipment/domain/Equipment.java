@@ -17,10 +17,12 @@ public class Equipment implements Serializable{
 	private Integer quantidade;
 	private String especial;
 	private Double preco;
+	private String conjunto;
+	private Integer defesa;
 	
 	public Equipment() {}
 
-	public Equipment(String nome, String aura, Integer quantidade, String raridade, String especial, Double preco) {
+	public Equipment(String nome, String aura, Integer quantidade, String raridade, String especial, Double preco, String subGrupo, Integer defesa) {
 		super();
 		this.id = null;
 		this.nome = nome;
@@ -29,6 +31,8 @@ public class Equipment implements Serializable{
 		this.raridade = raridade;
 		this.especial = especial;
 		this.preco = preco;
+		this.conjunto = subGrupo;
+		this.defesa = defesa;
 	}
 
 	public String getNome() {
@@ -85,6 +89,22 @@ public class Equipment implements Serializable{
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getConjunto() {
+		return conjunto;
+	}
+
+	public void setConjunto(String conjunto) {
+		this.conjunto = conjunto;
+	}
+
+	public Integer getDefesa() {
+		return defesa;
+	}
+
+	public void setDefesa(Integer defesa) {
+		this.defesa = defesa;
 	}
 
 	@Override
