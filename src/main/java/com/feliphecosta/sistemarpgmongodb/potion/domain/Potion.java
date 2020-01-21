@@ -14,7 +14,7 @@ public class Potion extends Equipment {
 	public Potion() {}
 
 	public Potion(String nome, String aura, Integer quantidade, String raridade, String especial, Double preco, Ingredients ingredientes, String conjunto, Integer defesa) {
-		super(nome, aura, quantidade, raridade, especial, preco, conjunto, defesa);
+		super(nome, aura, quantidade, raridade, especial, preco, conjunto, defesa, null);
 		this.ingredientes = ingredientes;
 	}
 

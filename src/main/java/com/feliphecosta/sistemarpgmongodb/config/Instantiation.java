@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import com.feliphecosta.sistemarpgmongodb.equipment.domain.Equipment;
 import com.feliphecosta.sistemarpgmongodb.equipment.repository.EquipmentRepository;
 import com.feliphecosta.sistemarpgmongodb.potion.repository.PotionRepository;
 import com.feliphecosta.sistemarpgmongodb.util.enums.DominioConjuntoEquipamento;
@@ -28,7 +29,7 @@ public class Instantiation implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		
+		//Weapon w = new Weapon(nome, aura, quantidade, raridade, especial, preco, dano, tipo, fn, grupo, observacao, conjunto, defesa);
 	}
 
 }

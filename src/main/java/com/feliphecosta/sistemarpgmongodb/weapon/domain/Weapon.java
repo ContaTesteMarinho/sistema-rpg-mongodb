@@ -17,7 +17,7 @@ public class Weapon extends Equipment {
 	public Weapon() {}
 	
 	public Weapon(String nome, Integer quantidade, Double preco, Integer dano, String tipo, Integer fn, String grupo, String observacao, String conjunto) {
-		super(nome, null, quantidade, null, null, preco, conjunto, null);
+		super(nome, null, quantidade, null, null, preco, conjunto, null, null);
 		this.dano = dano;
 		this.tipo = tipo;
 		this.fn = fn;
@@ -26,7 +26,7 @@ public class Weapon extends Equipment {
 	}
 	
 	public Weapon(String nome, String aura, Integer quantidade, String raridade, String especial, Double preco, Integer dano, String tipo, Integer fn, String grupo, String observacao, String conjunto, Integer defesa) {
-		super(nome, aura, quantidade, raridade, especial, preco, conjunto, defesa);
+		super(nome, aura, quantidade, raridade, especial, preco, conjunto, defesa, null);
 		this.dano = dano;
 		this.tipo = tipo;
 		this.fn = fn;
