@@ -18,12 +18,12 @@ public class ClasseDTO implements Serializable {
 	
 	public ClasseDTO() {}
 
-	public ClasseDTO(Classe classe) {
+	public ClasseDTO(Classe classe, List<Skill> skills) {
 		this.name = classe.getName();
 		this.attributes = classe.getAttributes();
 		this.proficiency = classe.getProficiency();
-		this.skills = classe.getSkills();
 		this.description = classe.getDescription();
+		this.skills = skills;
 	}
 
 	public String getName() {

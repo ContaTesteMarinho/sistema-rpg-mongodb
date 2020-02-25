@@ -29,6 +29,7 @@ public class CharacterSheet implements Serializable {
 	private Integer manaPoints;
 	private List<Skill> skills;
 	private Equipamentos equipment;
+	private Integer defense;
 	
 	public CharacterSheet() {}
 
@@ -133,6 +134,14 @@ public class CharacterSheet implements Serializable {
 
 	public void setEquipment(Equipamentos equipment) {
 		this.equipment = equipment;
+	}
+
+	public Integer getDefense() {
+		return defense;
+	}
+
+	public void setDefense(Integer defense) {
+		this.defense = defense;
 	}
 
 	@Override

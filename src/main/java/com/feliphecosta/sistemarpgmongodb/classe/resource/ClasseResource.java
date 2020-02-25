@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.feliphecosta.sistemarpgmongodb.classe.domain.Classe;
+import com.feliphecosta.sistemarpgmongodb.classe.dto.ClasseDTO;
 import com.feliphecosta.sistemarpgmongodb.classe.service.ClasseService;
 
 @RestController
@@ -19,10 +19,10 @@ public class ClasseResource {
 	private ClasseService classeService;
 	
 	@GetMapping
-	public ResponseEntity<List<Classe>> findAll(){
+	public ResponseEntity<List<ClasseDTO>> findAll(){
 		
-		List<Classe> classes = classeService.findAll();
+		List<ClasseDTO> classesDTO = classeService.findAll();
 		
-		return ResponseEntity.ok().body(classes);
+		return ResponseEntity.ok().body(classesDTO);
 	}
 }

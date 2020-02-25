@@ -10,15 +10,15 @@ import com.feliphecosta.sistemarpgmongodb.skill.repository.SkillRepository;
 
 @Service
 public class SkillService {
-
 	
 	@Autowired
 	private SkillRepository skillRepo;
 	
 	public List<Skill> findAll() {
-		
-		List<Skill> skills = skillRepo.findAll();
-		
-		return skills;
+		return skillRepo.findAll();
+	}
+	
+	public List<Skill> findByIds(List<String> skillsIds) {
+		return skillRepo.findByIdIn(skillsIds);
 	}
 }

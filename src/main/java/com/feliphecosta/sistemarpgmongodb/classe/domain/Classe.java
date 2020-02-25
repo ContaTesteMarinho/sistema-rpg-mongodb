@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.feliphecosta.sistemarpgmongodb.skill.domain.Skill;
 import com.feliphecosta.sistemarpgmongodb.util.Attributes;
 
 @Document
@@ -18,12 +17,12 @@ public class Classe implements Serializable {
 	private String name;
 	private Attributes attributes;
 	private String proficiency;
-	private List<Skill> skills;
+	private List<String> skills;
 	private String description;
 	
 	public Classe() {}
 
-	public Classe(String name, Attributes attributes, String proficiency, List<Skill> skills, String description) {
+	public Classe(String name, Attributes attributes, String proficiency, List<String> skills, String description) {
 		this.name = name;
 		this.attributes = attributes;
 		this.proficiency = proficiency;
@@ -63,11 +62,11 @@ public class Classe implements Serializable {
 		this.proficiency = proficiency;
 	}
 
-	public List<Skill> getSkills() {
+	public List<String> getSkills() {
 		return skills;
 	}
 
-	public void setSkills(List<Skill> skills) {
+	public void setSkills(List<String> skills) {
 		this.skills = skills;
 	}
 
