@@ -10,5 +10,5 @@ import com.feliphecosta.sistemarpgmongodb.skill.domain.Skill;
 @Repository
 public interface SkillRepository extends MongoRepository<Skill, String> {
 
-	public List<Skill> findByIdIn(List<String> ids);
+	public List<Skill> findByIdInOrderByName(List<String> ids);
 }

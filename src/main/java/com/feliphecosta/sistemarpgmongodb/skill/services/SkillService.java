@@ -19,6 +19,6 @@ public class SkillService {
 	}
 	
 	public List<Skill> findByIds(List<String> skillsIds) {
-		return skillRepo.findByIdIn(skillsIds);
+		return skillRepo.findByIdInOrderByName(skillsIds);
 	}
 }
