@@ -19,14 +19,14 @@ public class User implements Serializable {
 	private String id;
 	private String email;
 	private String password;
-	private CharacterSheet characterSheet;
+	private String characterSheet;
 	private Set<Integer> perfis = new HashSet<>();
 	
 	public User() {
 		addPerfil(Perfil.CLIENTE);
 	}
 
-	public User(String id, String email, String password, CharacterSheet characterSheet) {
+	public User(String id, String email, String password, String characterSheet) {
 		addPerfil(Perfil.CLIENTE);
 		this.id = id;
 		this.email = email;
@@ -58,11 +58,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public CharacterSheet getCharacterSheet() {
+	public String getCharacterSheet() {
 		return characterSheet;
 	}
 
-	public void setCharacterSheet(CharacterSheet characterSheet) {
+	public void setCharacterSheet(String characterSheet) {
 		this.characterSheet = characterSheet;
 	}
 
