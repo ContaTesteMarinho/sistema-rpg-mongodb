@@ -24,13 +24,14 @@ public class CharacterSheetDTO implements Serializable {
 	private Integer manaPoints;
 	private List<Skill> skills;
 	private Equipamentos equipment;
+	private Integer defense;
 	
 	public CharacterSheetDTO() {}
 
 	public CharacterSheetDTO(CharacterSheet characterSheet) {
 		this.name = characterSheet.getName();
 		this.classe = characterSheet.getClasse();
-		this.setRace(characterSheet.getRace());
+		this.race = characterSheet.getRace();
 		this.level = characterSheet.getLevel();
 		this.coins = characterSheet.getCoins();
 		this.attributes = characterSheet.getAttributes();
@@ -38,6 +39,7 @@ public class CharacterSheetDTO implements Serializable {
 		this.manaPoints = characterSheet.getManaPoints();
 		this.skills = characterSheet.getSkills();
 		this.equipment = characterSheet.getEquipment();
+		this.defense = characterSheet.getDefense();
 	}
 
 	public String getName() {
@@ -118,6 +120,14 @@ public class CharacterSheetDTO implements Serializable {
 
 	public void setEquipment(Equipamentos equipment) {
 		this.equipment = equipment;
+	}
+
+	public Integer getDefense() {
+		return defense;
+	}
+
+	public void setDefense(Integer defense) {
+		this.defense = defense;
 	}
 	
 }

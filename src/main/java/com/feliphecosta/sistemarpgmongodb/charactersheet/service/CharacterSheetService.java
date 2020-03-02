@@ -20,7 +20,7 @@ public class CharacterSheetService {
 		
 		Optional<CharacterSheet> optional = characterSheetRepo.findById(id);
 		
-		return optional.orElseThrow(() -> new ObjectNotFoundException("Jogador não encontrado!")) ;
+		return optional.orElseThrow(() -> new ObjectNotFoundException("Ficha não encontrada!")) ;
 	}
 	
 	public CharacterSheet insert(CharacterSheet characterSheet) {
