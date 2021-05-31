@@ -3,7 +3,7 @@ package com.feliphecosta.sistemarpgmongodb.user.services;
 import java.util.Optional;
 
 import com.feliphecosta.sistemarpgmongodb.charactersheet.dto.CharacterSheetDTO;
-import com.feliphecosta.sistemarpgmongodb.charactersheet.service.CharacterSheetService;
+import com.feliphecosta.sistemarpgmongodb.charactersheet.service.impl.CharacterSheetServiceImpl;
 import com.feliphecosta.sistemarpgmongodb.user.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,7 +22,7 @@ public class UserService {
 	@Autowired
 	private BCryptPasswordEncoder pe;
 	@Autowired
-	private CharacterSheetService characterSheetService;
+	private CharacterSheetServiceImpl characterSheetServiceImpl;
 	
 	public User findById(String id) {
 		
@@ -57,7 +57,7 @@ public class UserService {
 		userDTO.setEmail(user.getEmail());
 
 		if (user.getCharacterSheet() != null) {
-			userDTO.setCharacterSheet(new CharacterSheetDTO(characterSheetService.findById(user.getCharacterSheet())));
+			userDTO.setCharacterSheet(new CharacterSheetDTO(characterSheetServiceImpl.findById(user.getCharacterSheet())));
 		}
 
 		return userDTO;

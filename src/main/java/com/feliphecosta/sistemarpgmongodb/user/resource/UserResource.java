@@ -4,7 +4,7 @@ import java.net.URI;
 
 import com.feliphecosta.sistemarpgmongodb.charactersheet.domain.CharacterSheet;
 import com.feliphecosta.sistemarpgmongodb.charactersheet.dto.CharacterSheetDTO;
-import com.feliphecosta.sistemarpgmongodb.charactersheet.service.CharacterSheetService;
+import com.feliphecosta.sistemarpgmongodb.charactersheet.service.impl.CharacterSheetServiceImpl;
 import com.feliphecosta.sistemarpgmongodb.user.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ public class UserResource {
 	@Autowired
 	private UserService userService;
 	@Autowired
-	private CharacterSheetService characterSheetService;
+	private CharacterSheetServiceImpl characterSheetServiceImpl;
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<User> findById(@PathVariable String id) {
@@ -57,8 +57,8 @@ public class UserResource {
 			  @RequestParam(value="email") String email
 			, @RequestBody CharacterSheetDTO characterSheetDTO) {
 
-		CharacterSheet newDataBaseCharactersheets = characterSheetService
-				.insert(characterSheetService.fromDTO(characterSheetDTO));
+		CharacterSheet newDataBaseCharactersheets = characterSheetServiceImpl
+				.insert(characterSheetServiceImpl.fromDTO(characterSheetDTO));
 
 		UserDTO userDTO = userService.updateCharacterSheet(email, newDataBaseCharactersheets.getId());
 

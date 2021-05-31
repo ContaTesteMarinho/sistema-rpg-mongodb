@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 import com.feliphecosta.sistemarpgmongodb.charactersheet.domain.CharacterSheet;
 
 @Repository
-public interface CharacterSheetRepository extends MongoRepository<CharacterSheet, String> {
-
-}
+public interface CharacterSheetRepository extends MongoRepository<CharacterSheet, String> {}
