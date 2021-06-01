@@ -1,6 +1,7 @@
 package com.feliphecosta.sistemarpgmongodb.config;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -26,13 +27,12 @@ import com.feliphecosta.sistemarpgmongodb.security.JWTUtil;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UserDetailsService userDetailsService;
-	
+	private UserDetailsService _userDetailsService;
 	@Autowired
-	private JWTUtil jwtUtil;
+	private JWTUtil _jwtUtil;
 	
 	private static final String[] PUBLIC_MATCHERS = {
-		"/charactersheet/**",
+		"/character-sheets/**",
 		"/users/**"
 	};
 	
@@ -44,6 +44,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		"/potions",
 		"/equipments"
 	};
+
+	private static final List<String> ALLOWED_METHODS = Arrays.asList(
+		HttpMethod.POST.name(),
+		HttpMethod.GET.name(),
+		HttpMethod.PUT.name(),
+		HttpMethod.PATCH.name(),
+		HttpMethod.DELETE.name(),
+		HttpMethod.OPTIONS.name()
+	);
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -56,23 +65,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.anyRequest()
 			.authenticated();
 		
-		http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
-		
-		http.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil,userDetailsService));
+		http.addFilter(new JWTAuthorizationFilter(authenticationManager(), _jwtUtil, _userDetailsService));
 		
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+		auth.userDetailsService(_userDetailsService).passwordEncoder(bCryptPasswordEncoder());
 	}
 	
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
 		
 		CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues();
-		configuration.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "PATCH", "DELETE", "OPTIONS"));
+		configuration.setAllowedMethods(ALLOWED_METHODS);
+
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", configuration);
 		
