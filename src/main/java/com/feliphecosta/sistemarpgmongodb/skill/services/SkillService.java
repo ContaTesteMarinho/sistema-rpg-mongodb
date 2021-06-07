@@ -1,24 +1,12 @@
 package com.feliphecosta.sistemarpgmongodb.skill.services;
 
+import com.feliphecosta.sistemarpgmongodb.skill.domain.Skill;
+
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+public interface SkillService {
 
-import com.feliphecosta.sistemarpgmongodb.skill.domain.Skill;
-import com.feliphecosta.sistemarpgmongodb.skill.repository.SkillRepository;
+    List<Skill> findAll();
 
-@Service
-public class SkillService {
-	
-	@Autowired
-	private SkillRepository skillRepo;
-	
-	public List<Skill> findAll() {
-		return skillRepo.findAll();
-	}
-	
-	public List<Skill> findByIds(List<String> skillsIds) {
-		return skillRepo.findByIdInOrderByName(skillsIds);
-	}
+    List<Skill> findByIds(List<String> skillsIds);
 }
