@@ -2,13 +2,13 @@ package com.feliphecosta.sistemarpgmongodb.user.dto;
 
 import java.io.Serializable;
 
-public class CredenciaisDTO implements Serializable{
+public class Credential implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String email;
 	private String password;
 	
-	public CredenciaisDTO() {}
+	public Credential() {}
 
 	public String getEmail() {
 		return email;

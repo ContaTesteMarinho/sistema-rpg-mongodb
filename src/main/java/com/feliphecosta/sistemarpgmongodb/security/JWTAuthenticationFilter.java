@@ -17,18 +17,17 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.feliphecosta.sistemarpgmongodb.user.dto.CredenciaisDTO;
+import com.feliphecosta.sistemarpgmongodb.user.dto.Credential;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-	private AuthenticationManager authenticationManager;
-    
-    private JWTUtil jwtUtil;
+	private AuthenticationManager _authenticationManager;
+    private JWTUtil _jwtUtil;
 
-    public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil) {
+    public JWTAuthenticationFilter(AuthenticationManager _authenticationManager, JWTUtil _jwtUtil) {
     	setAuthenticationFailureHandler(new JWTAuthenticationFailureHandler());
-        this.authenticationManager = authenticationManager;
-        this.jwtUtil = jwtUtil;
+        this._authenticationManager = _authenticationManager;
+        this._jwtUtil = _jwtUtil;
     }
 	
 	@Override
@@ -36,12 +35,12 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                                 HttpServletResponse res) throws AuthenticationException {
 
 		try {
-			CredenciaisDTO creds = new ObjectMapper().readValue(req.getInputStream(), CredenciaisDTO.class);
+			Credential credential = new ObjectMapper().readValue(req.getInputStream(), Credential.class);
 	
-	        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(creds.getEmail(), creds.getPassword(), new ArrayList<>());
-	        
-	        Authentication auth = authenticationManager.authenticate(authToken);
-	        return auth;
+	        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+	                credential.getEmail(), credential.getPassword(), new ArrayList<>());
+
+            return _authenticationManager.authenticate(authToken);
 		}
 		catch (IOException e) {
 			throw new RuntimeException(e);
@@ -55,7 +54,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             Authentication auth) throws IOException, ServletException {
 	
 		String username = ((UserSS) auth.getPrincipal()).getUsername();
-        String token = jwtUtil.generateToken(username);
+        String token = _jwtUtil.generateToken(username);
         res.addHeader("Authorization", "Bearer " + token);
         res.addHeader("access-control-expose-headers", "Authorization");
 	}
@@ -74,8 +73,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             long date = new Date().getTime();
             return "{\"timestamp\": " + date + ", "
                 + "\"status\": 401, "
-                + "\"error\": \"Não autorizado\", "
-                + "\"message\": \"Email ou senha inválidos\", "
+                + "\"error\": \"Unauthorized\", "
+                + "\"message\": \"Email or password invalid\", "
                 + "\"path\": \"/login\"}";
         }
     }
