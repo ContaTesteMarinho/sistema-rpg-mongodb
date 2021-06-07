@@ -1,66 +1,20 @@
 package com.feliphecosta.sistemarpgmongodb.user.services;
 
-import java.util.Optional;
-
-import com.feliphecosta.sistemarpgmongodb.charactersheet.dto.CharacterSheetDTO;
-import com.feliphecosta.sistemarpgmongodb.charactersheet.service.impl.CharacterSheetServiceImpl;
-import com.feliphecosta.sistemarpgmongodb.user.dto.UserDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-
 import com.feliphecosta.sistemarpgmongodb.user.domain.User;
+import com.feliphecosta.sistemarpgmongodb.user.dto.UserDTO;
 import com.feliphecosta.sistemarpgmongodb.user.dto.UserNewDTO;
-import com.feliphecosta.sistemarpgmongodb.user.repository.UserRepository;
-import com.feliphecosta.sistemarpgmongodb.util.exceptions.ObjectNotFoundException;
 
-@Service
-public class UserService {
+public interface UserService {
 
-	@Autowired
-	private UserRepository userRepo;
-	@Autowired
-	private BCryptPasswordEncoder pe;
-	@Autowired
-	private CharacterSheetServiceImpl characterSheetServiceImpl;
-	
-	public User findById(String id) {
-		
-		Optional<User> optional = userRepo.findById(id);
-		
-		return optional.orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado!"));
-	}
-	
-	public User insert(User user) {
-		return userRepo.insert(user);
-	}
+    User findById(String id);
 
-	public User findByEmail(String email) {
-		return userRepo.findByEmail(email);
-	}
+    User insert(User user);
 
-	public UserDTO updateCharacterSheet(String email, String idCharacterSheet) {
+    User findByEmail(String email);
 
-		User user = this.findByEmail(email);
-		user.setCharacterSheet(idCharacterSheet);
+    UserDTO updateCharacterSheet(String email, String characterSheetId);
 
-		return fromEntity(userRepo.save(user));
-	}
+    User fromDTO(UserNewDTO userNewDTO);
 
-	public User fromDTO(UserNewDTO userNewDTO) {
-		return new User(null, userNewDTO.getEmail(), pe.encode(userNewDTO.getPassword()), null);
-	}
-
-	public UserDTO fromEntity(User user) {
-		UserDTO userDTO = new UserDTO();
-
-		userDTO.setEmail(user.getEmail());
-
-		if (user.getCharacterSheet() != null) {
-			userDTO.setCharacterSheet(new CharacterSheetDTO(characterSheetServiceImpl.findById(user.getCharacterSheet())));
-		}
-
-		return userDTO;
-	}
-	
+    UserDTO fromEntity(User user);
 }

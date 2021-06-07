@@ -10,11 +10,11 @@ import com.feliphecosta.sistemarpgmongodb.user.domain.User;
 public class UserNewDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@NotEmpty(message="Preenchimento obrigatório")
-	@Email(message="Email inválido")
+	@NotEmpty(message="This field is required")
+	@Email(message="please enter a valid email")
 	private String email;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
+	@NotEmpty(message="This field is required")
 	private String password;
 	
 	public UserNewDTO() {}

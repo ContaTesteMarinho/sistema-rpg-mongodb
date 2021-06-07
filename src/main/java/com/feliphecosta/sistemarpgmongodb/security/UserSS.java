@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.feliphecosta.sistemarpgmongodb.user.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,12 +21,16 @@ public class UserSS implements UserDetails {
 	
 	public UserSS() {}
 	
-	public UserSS(String id, String email, String password, Set<Perfil> perfis) {
+	public UserSS(User user) {
 		super();
-		this.id = id;
-		this.email = email;
-		this.password = password;
-		this.authorities = perfis.stream().map(perfil -> new SimpleGrantedAuthority(perfil.getDescricao())).collect(Collectors.toList());
+		this.id = user.getId();
+		this.email = user.getEmail();
+		this.password = user.getPassword();
+		this.authorities = user.getPerfis().stream().map(
+			perfil -> new SimpleGrantedAuthority(perfil.getDescricao())
+		).collect(
+			Collectors.toList()
+		);
 	}
 
 	public String getId() {

@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.feliphecosta.sistemarpgmongodb.user.dto.UserDTO;
+import com.feliphecosta.sistemarpgmongodb.user.dto.UserNewDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -27,12 +28,10 @@ public class User implements Serializable {
 		addPerfil(Perfil.CLIENTE);
 	}
 
-	public User(String id, String email, String password, String characterSheet) {
+	public User(String email, String password) {
 		addPerfil(Perfil.CLIENTE);
-		this.id = id;
 		this.email = email;
 		this.password = password;
-		this.characterSheet = characterSheet;
 	}
 
 	public String getId() {

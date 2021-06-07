@@ -1,31 +1,23 @@
-package com.feliphecosta.sistemarpgmongodb.user.services;
+package com.feliphecosta.sistemarpgmongodb.user.services.impl;
 
+import com.feliphecosta.sistemarpgmongodb.security.UserSS;
+import com.feliphecosta.sistemarpgmongodb.user.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.feliphecosta.sistemarpgmongodb.security.UserSS;
-import com.feliphecosta.sistemarpgmongodb.user.domain.User;
-import com.feliphecosta.sistemarpgmongodb.user.repository.UserRepository;
+import java.util.Optional;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
-	private UserRepository userRepo;
+	private UserService _userService;
 	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
-		User user = userRepo.findByEmail(email);
-		
-		if(user == null) {
-			throw new UsernameNotFoundException(email);
-		}
-		
-		return new UserSS(user.getId(), user.getEmail(), user.getPassword(), user.getPerfis());
+		return new UserSS(_userService.findByEmail(email));
 	}
-
 }
